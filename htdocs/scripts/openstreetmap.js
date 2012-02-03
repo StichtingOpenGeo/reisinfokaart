@@ -188,8 +188,9 @@ function renderKV55(xmlDoc) {
         name = trips[i].getElementsByTagName("DestinationName")[0].childNodes[0].nodeValue;
         expected = trips[i].getElementsByTagName("ExpectedDepartureTime")[0].childNodes[0];
         target = trips[i].getElementsByTagName("TargetDepartureTime")[0].childNodes[0].nodeValue;
-        if (expected) {
-            if (expected.nodeValue != target) {
+        tripstatus = trips[i].getElementsByTagName("TripStopStatus")[0].childNodes[0];
+	if (tripstatus) {
+            if (tripstatus.nodeValue == "DRIVING") {
                 expected = '<i>'+expected.nodeValue+'</i>';
             } else {
                 expected = expected.nodeValue;
